@@ -2,17 +2,16 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path');
 const url = require('url');
 
-require('dotenv').config();
+require('dotenv').config({path: path.join(__dirname, '.env')});
 
 let win = null;
 
 app.on('ready', function () {
-
   // Initialize the window to our specified dimensions
   win = new BrowserWindow({width: 1000, height: 600, frame: false});
-
+  win.webContents.openDevTools();
   // Specify entry point
-  if (process.env.PACKAGE === 'true'){
+  if (process.env.PACKAGE){
     win.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',

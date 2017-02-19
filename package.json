@@ -1,16 +1,14 @@
 {
   "name": "tour-of-heros",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "main.js",
   "angular-cli": {},
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "build": "ng build --base-href /Users/oscar/Documents/Development/Electron/tour-of-heros/dist/",
-    "electron": "electron ."
+    "electron": "electron .",
+    "build": "npm run ng-build && npm run package",
+    "ng-build": "ng build -prod -e prod --output-path ./dist/ --base-href ./",
+    "package": "electron-packager . TourOfHeroes --asar --out=build --overwrite=true --ignore=\"(src|tslint\\.json|\\.angular-cli\\.json|\\.editorconfig|\\.gitignore)\""
   },
   "private": true,
   "dependencies": {
@@ -34,17 +32,10 @@
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
+    "asar": "^0.13.0",
     "codelyzer": "~2.0.0-beta.4",
     "electron": "^1.4.15",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.1.0",
+    "electron-packager": "^8.5.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
     "typescript": "~2.0.0"
